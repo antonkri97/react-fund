@@ -1,19 +1,36 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var FlowStatusWebpackPlugin = require('flow-status-webpack-plugin');
 
 module.exports = {
   entry: './app/index.js',
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
 
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: ["source-map-loader"],
+        enforce: "pre"
+      },
+      {
         test: /\.(js)$/, 
-        use: 'babel-loader'
+        use: {
+          loader: 'babel-loader',
+          query: {
+            presets: [
+              "env",
+              "react"
+            ],
+            plugins: ["transform-runtime"]
+          }
+        },
+        exclude: /(node_modules)/,
       },
       {
         test: /\.css$/,
@@ -21,9 +38,17 @@ module.exports = {
       }
     ]
   },
+
+  devServer: {
+    historyApiFallback: true
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'app/index.html'
+      template: 'public/index.html'
+    }),
+    new FlowStatusWebpackPlugin({
+      failOnError: true
     })
   ]
 };

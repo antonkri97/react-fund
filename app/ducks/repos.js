@@ -2,9 +2,12 @@ export const REQUEST_STARTED = 'INITIAL_REQUEST';
 const REQUEST_SUCCESSFULL = 'REQUEST_SUCCESSFULL';
 const REQUEST_FAILED = 'REQUEST_FAILED';
 
+
 const initialState = {
   isFetching: false,
-  repos: [],
+  repos: {
+    items: []
+  },
   error: null
 };
 

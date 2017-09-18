@@ -7,16 +7,17 @@ import createSagaMiddleware from 'redux-saga'
 import mySaga from "./sagas/index";
 import {logger} from "redux-logger";
 import {initialRequest} from "./ducks/repos";
+import { Provider } from 'react-redux';
 
-// const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
-// const store = createStore(reducers, applyMiddleware(logger));
+const store = createStore(reducers, applyMiddleware(sagaMiddleware, logger));
 
-// sagaMiddleware.run(mySaga());
-
-// store.dispatch(initialRequest('java'));
+sagaMiddleware.run(mySaga);
 
 ReactDOM.render(
-  <div>Hello</div>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 );
