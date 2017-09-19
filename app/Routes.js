@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Home from './components/Home/Home';
 import Popular from './containers/PopularPage';
 import Battle from './components/Battle';
-import Results from './components/Battle/Results';
+import Results from './containers/BattleResultPage';
 
 export default () => (
   <Switch>

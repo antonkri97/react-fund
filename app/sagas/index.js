@@ -1,21 +1,10 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
-import {REQUEST_STARTED, requestFailed, requestSuccessfull} from "../ducks/repos";
-import axios from 'axios';
+import repos from './repos';
+import battle from './battle';
+import { fork } from 'redux-saga/effects';
 
-function* fetchRepos({ language }) {
-  const uri = `https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`;
-
-  try {
-    const repos = yield call(axios.get, uri);
-
-    yield put(requestSuccessfull(repos.data))
-  } catch (error) {
-    yield put(requestFailed(error.message))
-  }
+export default function*() {
+  yield [
+    fork(repos),
+    fork(battle)
+  ]
 }
-
-function* mySaga() {
-  yield takeLatest(REQUEST_STARTED, fetchRepos)
-}
-
-export default mySaga;

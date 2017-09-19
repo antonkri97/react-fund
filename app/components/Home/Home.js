@@ -12,7 +12,7 @@ const HomeWrapper = styled.div`
 export default () => (
   <HomeWrapper>
     <h1>Github Battle: Battle your friends...and stuff</h1>
-    <Link to='/'>
+    <Link to='/battle'>
       <Button>Battle</Button>
     </Link>
   </HomeWrapper>

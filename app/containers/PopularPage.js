@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import Popular from '../components/Popular';
 import { initialRequest as getRepos } from '../ducks/repos';
 
-const mapStateToProps = (state) => ({
-  repos: state.api.repos.items
+const mapStateToProps = ({repos}) => ({
+  repos: repos.repos.items
 });
 
 const mapDispatchToProps = (dispatch) => ({

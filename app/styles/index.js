@@ -62,3 +62,22 @@ export const Button = styled.button`
     transform: translateY(1px);
   }
 `;
+
+export const Reset = styled.button`
+  border: none;
+  background: transparent;
+  color: #d0021b;
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const SpaceListItem = styled.ul`
+  margin-bottom: 7px;
+  list-style-type: none;
+  padding: inherit;
+`;

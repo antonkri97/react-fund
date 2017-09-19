@@ -14,6 +14,10 @@ class Popular extends Component {
     this.onLanguageSelect = this.onLanguageSelect.bind(this);
   }
 
+  componentDidMount() {
+    this.props.onLanguageSelect('All');
+  }
+
   onLanguageSelect(e) {
     this.setState({
       selectedLanguage: e.target.innerText

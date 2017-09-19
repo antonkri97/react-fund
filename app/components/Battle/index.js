@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PlayerInput from './PlayerInput'
 import PlayerPreview from './PlayerPreview';
 import { Link } from 'react-router-dom';
-import { Row, Button } from '../../styles';
+import { Row, Button, Reset } from '../../styles';
 
 class Battle extends Component {
   constructor(props) {
@@ -64,12 +64,16 @@ class Battle extends Component {
           {
             !playerOne.username ?
               <PlayerInput header='Player One' onSubmit={this.handleFirstPlayer}/> :
-              <PlayerPreview username={playerOne.username} avatar={playerOne.image} onReset={this.onFirstPlayerReset}/>
+              <PlayerPreview username={playerOne.username} avatar={playerOne.image}>
+                <Reset onClick={this.onFirstPlayerReset}>Reset</Reset>
+              </PlayerPreview>
           }
           {
             !playerTwo.username ?
               <PlayerInput header='Player Two' onSubmit={this.handleSecondPlayer}/> :
-              <PlayerPreview username={playerTwo.username} avatar={playerTwo.image} onReset={this.onSecondPlayerReset}/>
+              <PlayerPreview username={playerTwo.username} avatar={playerTwo.image}>
+                <Reset onClick={this.onSecondPlayerReset}>Reset</Reset>
+              </PlayerPreview>
           }
         </Row>
         {

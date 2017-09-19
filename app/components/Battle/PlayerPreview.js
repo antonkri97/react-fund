@@ -3,33 +3,19 @@ import PropTypes from 'prop-types';
 import { Column, Avatar } from '../../styles';
 import styled from "styled-components";
 
-const Reset = styled.button`
-  border: none;
-  background: transparent;
-  color: #d0021b;
-  display: block;
-  width: 100%;
-  text-align: center;
-  
-  :hover {
-    cursor: pointer;
-  }
-`;
-
-const PlayerPreview = ({ username, avatar, onReset }) => (
+const PlayerPreview = ({ children, username, avatar }) => (
   <div>
     <Column>
       <Avatar src={avatar} alt={`Avatar for ${username}`}/>
       <h2>@{username}</h2>
     </Column>
-    <Reset onClick={onReset}>Reset</Reset>
+    {children}
   </div>
 );
 
 PlayerPreview.propTypes = {
   username: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired
+  avatar: PropTypes.string.isRequired
 };
 
 export default PlayerPreview;
