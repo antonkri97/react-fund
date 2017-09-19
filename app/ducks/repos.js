@@ -14,11 +14,11 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case REQUEST_STARTED:
-      return Object.assign({}, state, { isFetching: true });
+      return { ...state, isFetching: true };
     case REQUEST_SUCCESSFULL:
-      return Object.assign({}, state, { isFetching: false, repos: action.repos});
+      return { ...state, isFetching: false, repos: action.repos };
     case REQUEST_FAILED:
-      return Object.assign({}, state, { isFetching: false, error: action.error });
+      return { ...state, isFetching: false, error: action.error };
     default:
       return state;
   }

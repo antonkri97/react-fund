@@ -27,7 +27,7 @@ module.exports = {
               "env",
               "react"
             ],
-            plugins: ["transform-runtime"]
+            plugins: ["transform-runtime", "transform-object-rest-spread"]
           }
         },
         exclude: /(node_modules)/,
